@@ -1,10 +1,10 @@
 #include "pt/plankton.h"
 
 #define SCREEN_WIDTH  800
-#define SCREEE_HEIGHT 450
+#define SCREEN_HEIGHT 450
 
 int main() {
-	pt::initWindow(SCREEN_WIDTH, SCREEE_HEIGHT, "Hello World!");
+	pt::initWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Hello World!");
 
 	while (!pt::windowShouldClose()) {
 		pt::prepareFrame();
