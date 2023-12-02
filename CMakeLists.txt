@@ -11,7 +11,7 @@ add_executable(${PROJECT_NAME} ${SOURCE} ${ASSETS})
 
 add_subdirectory(vendor/plankton)
 target_link_libraries(${PROJECT_NAME} plankton)
-target_include_directories(${PROJECT_NAME} PUBLIC "vendor/plankton/include" "vendor/plankton/vendor/spdlog")
+target_include_directories(${PROJECT_NAME} PUBLIC "src" "vendor/plankton/include" "vendor/plankton/vendor/spdlog")
 
 # Macro for absolute path to assets folder
 # NOTE: use relative path for release

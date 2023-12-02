@@ -1,17 +1,31 @@
 #include "pt/plankton.h"
+#include "pt/Log.h"
 
-#define SCREEN_WIDTH  800
-#define SCREEN_HEIGHT 450
+#include "Game.h"
+
+#define SCREEN_SIZE 600
+
+#ifndef ASSETS_PATH
+#define ASSETS_PATH ""
+#endif
+
+#define TILESW 20
 
 int main() {
-	pt::initWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Hello World!");
+	pt::initWindow(SCREEN_SIZE, SCREEN_SIZE, "megusta");
+
+	Game game(SCREEN_SIZE, TILESW);
 
 	while (!pt::windowShouldClose()) {
 		pt::prepareFrame();
 
-		pt::clearFrame({ 1.0f, 1.0f, 1.0f, 1.0f });
+		if (pt::isKeyPressed(pt::Key::KEY_ESCAPE)) pt::closeWindow();
 
-		// Drawing code goes here
+		game.Update();
+
+		pt::clearFrame({ 0.1f, 0.1f, 0.1f, 0.1f });
+		
+		game.Draw();
 
 		pt::display();
 	}
