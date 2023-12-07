@@ -3,23 +3,32 @@
 
 #include "pt/plankton.h"
 
+#define SCREEN_SIZE 600
+#define TILESW      20
+#define TILE_SIZE   SCREEN_SIZE/TILESW
+#define BOMBAS      40
+
+enum TileState {
+    BOMB
+};
+
 class Game {
 public:
-    Game(int p_SCREEN_SIZE, int p_TILESW);
+    Game();
 
     void Start();
     void Update();
     void Draw();
 private:
-    const int SCREEN_SIZE, TILESW, TILE_SIZE;
     pt::Texture numbersTex;
 	pt::Color even;
 	pt::Color odd;
 	pt::Color evenHover;
 	pt::Color oddHover;
 
-    int hoveredTileX;
-    int hoveredTileY;
+    TileState map[TILESW][TILESW];
+
+    pt::Vector2Int hoveredTile;
     int hoveredTileIsumJ;
 };
 

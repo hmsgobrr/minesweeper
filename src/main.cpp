@@ -16,6 +16,8 @@ int main() {
 
 	Game game(SCREEN_SIZE, TILESW);
 
+	game.Start();
+
 	while (!pt::windowShouldClose()) {
 		pt::prepareFrame();
 

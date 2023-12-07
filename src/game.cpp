@@ -4,11 +4,7 @@
 
 #include <cmath>
 
-Game::Game(int p_SCREEN_SIZE, int p_TILESW):
-    SCREEN_SIZE(p_SCREEN_SIZE),
-    TILESW(p_TILESW),
-    TILE_SIZE(SCREEN_SIZE/TILESW) {
-
+Game::Game() {
 	even = { 0.8f, 0.8f, 0.8f, 1.0f };
 	odd = { 0.2f, 0.2f, 0.2f, 1.0f };
 	evenHover = { 0.7f, 0.7f, 0.7f, 1.0f };
@@ -17,13 +13,23 @@ Game::Game(int p_SCREEN_SIZE, int p_TILESW):
     numbersTex.createFromFile(ASSETS_PATH"numeros.png", true);
 }
 
-void Game::Start() {}
+void Game::Start() {
+    for (int i = 0; i < BOMBAS; i++) {
+        while (true) {
+            pt::Vector2Int bombPos = { pt::getRandomNumber(0,  TILESW-1), pt::getRandomNumber(0,  TILESW-1) };
+            if (map[bombPos.x][bombPos.y] != BOMB) {
+                map[bombPos.x][bombPos.y] = BOMB;
+                break;
+            }
+        }
+    }
+}
 
 void Game::Update() {
     // convert mouse position into tile position
-    hoveredTileX = floor(pt::getMousePosition().x/SCREEN_SIZE*(float)TILESW);
-    hoveredTileY = floor(pt::getMousePosition().y/SCREEN_SIZE*(float)TILESW);
-    hoveredTileIsumJ = hoveredTileX + TILESW*hoveredTileY;
+    hoveredTile.x = floor(pt::getMousePosition().x/SCREEN_SIZE*(float)TILESW);
+    hoveredTile.y = floor(pt::getMousePosition().y/SCREEN_SIZE*(float)TILESW);
+    hoveredTileIsumJ = hoveredTile.x + TILESW*hoveredTile.y;
 }
 
 void Game::Draw() {
