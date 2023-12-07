@@ -14,7 +14,7 @@
 int main() {
 	pt::initWindow(SCREEN_SIZE, SCREEN_SIZE, "megusta");
 
-	Game game(SCREEN_SIZE, TILESW);
+	Game game;
 
 	game.Start();
 
